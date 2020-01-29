@@ -6,7 +6,7 @@ import { ToastContext } from './ToastContainer'
 let timerToast = {}
 
 export const useToast = () => {
-  const [state, setState] = useContext(ToastContext)
+  const [toasts, setState] = useContext(ToastContext)
 
   /**
    * Generate a generic ID
@@ -39,15 +39,13 @@ export const useToast = () => {
    * add toast to toasts and create a timeout to delete him
    * @param toast : Toast
    */
-  const setToast = toast => {
+  const setToast = (toast, time = 5000) => {
     const id = generateId()
-    const newToast = { ...toast, id }
-    let newToasts = [].concat(newToast, state.toasts || [])
-    createTimeOut(newToast, 2000)
-    
-    if (newToasts.length > 3) newToasts.pop()
+    let newToasts = [].concat({ ...toast, id }, toasts || [])
+    createTimeOut({ ...toast, id }, time)
 
-    setState(prevState => ({ ...prevState, toasts: newToasts }))
+    if (newToasts.length > 3) newToasts.pop()
+    setState(newToasts)
   }
 
   /**
@@ -55,10 +53,10 @@ export const useToast = () => {
    * @param toast : toastId
    */
   const removeToast = toastId => {
+    removeTimeOut(toastId)
     setState(prevState => {
-      removeTimeOut(toastId)
-      const newToasts = prevState.toasts.filter(({ id }) => id !== toastId)
-      return { ...prevState, toasts: newToasts }
+      const newToasts = prevState.filter(({ id }) => id !== toastId)
+      return newToasts
     })
   }
 
@@ -66,11 +64,11 @@ export const useToast = () => {
    * Delete all toast from array
    */
   const clearToasts = () => {
-    setState(prevState => ({ ...prevState, toasts: [] }))
+    setState([])
   }
 
   return {
-    getToasts: state,
+    getToasts: toasts,
     setToast,
     removeToast,
     clearToasts,

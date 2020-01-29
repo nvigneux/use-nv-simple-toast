@@ -13,15 +13,15 @@ const canUseDOM = !!(
 export const ToastContext = React.createContext([{}, () => {}])
 
 export const ToastContainer = ({ children }) => {
-  const [state, setState] = useState({ toasts: [] })
+  const [toasts, setToasts] = useState([])
 
   const portalTarget = canUseDOM ? document.body : null
 
   return (
-    <ToastContext.Provider value={[state, setState]}>
+    <ToastContext.Provider value={[toasts, setToasts]}>
       {children}
 
-      {createPortal(<ToastComponent toasts={state.toasts} />, portalTarget)}
+      {createPortal(<ToastComponent toasts={toasts} />, portalTarget)}
     </ToastContext.Provider>
   )
 }

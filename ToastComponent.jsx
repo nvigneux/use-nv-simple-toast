@@ -8,7 +8,7 @@ export const ToastComponent = () => {
 
   return (
     <div style={{ position: 'fixed', top: 0 }}>
-      {getToasts.toasts.map(toast => (
+      {getToasts.map(toast => (
         <div onClick={() => removeToast(toast.id)} key={toast.id}>
           {toast.title}
         </div>
