@@ -17,11 +17,11 @@ export const ToastComponent = () => {
   )
 }
 
+const Toast = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+})
+
 ToastComponent.propTypes = {
-  toasts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  toasts: PropTypes.arrayOf(Toast.isRequired).isRequired,
 }
