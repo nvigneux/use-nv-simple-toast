@@ -21,7 +21,7 @@ export const ToastContainer = ({ children }) => {
     <ToastContext.Provider value={[toasts, setToasts]}>
       {children}
 
-      {createPortal(<ToastComponent toasts={toasts} />, portalTarget)}
+      {createPortal(<ToastComponent />, portalTarget)}
     </ToastContext.Provider>
   )
 }

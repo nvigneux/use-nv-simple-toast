@@ -1,27 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import { useToast } from '.'
+import './Toast.css'
 
 export const ToastComponent = () => {
   const { removeToast, getToasts } = useToast()
 
   return (
-    <div style={{ position: 'fixed', top: 0 }}>
+    <section className="nv-toasts">
       {getToasts.map(toast => (
-        <div onClick={() => removeToast(toast.id)} key={toast.id}>
-          {toast.title}
+        <div key={toast.id} className="nv-toast">
+          <p className="nv-toast__text">{toast.title}</p>
+          <span
+            className="nv-toast__action"
+            onClick={() => removeToast(toast.id)}
+            key={toast.id}
+          >
+            remove
+          </span>
         </div>
       ))}
-    </div>
+    </section>
   )
 }
 
-const Toast = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-})
-
-ToastComponent.propTypes = {
-  toasts: PropTypes.arrayOf(Toast.isRequired).isRequired,
-}
+// const Toast = PropTypes.shape({
+//   id: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+// })
