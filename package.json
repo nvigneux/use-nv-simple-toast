@@ -4,7 +4,7 @@
   "description": "A really really simple toast hook for React",
   "author": "nvigneux",
   "license": "MIT",
-  "repository": "nvigneux/nv-simple-toast-hook",
+  "repository": "nvigneux/use-nv-simple-toast",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

@@ -27,7 +27,7 @@ const Toaster = () => {
           <input
             name="time"
             type="number"
-            onChange={e => handleChangeForm("time", parseInt(e.target.value))}
+            onChange={e => handleChangeForm("time", parseInt(e.target.value, 10))}
           />
         </label>
         <button
