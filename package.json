@@ -1,6 +1,6 @@
 {
   "name": "use-nv-simple-toast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A really really simple toast hook for React",
   "author": "nvigneux",
   "license": "MIT",
