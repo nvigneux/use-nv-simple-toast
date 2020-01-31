@@ -1,0 +1,59 @@
+.nvToasts {
+  position: fixed;
+  display: flex;
+  flex-direction: column-reverse;
+  bottom: 15px;
+  right: 15px;
+}
+
+.nvToasts .nvToast {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 350px;
+  padding: 0 15px;
+  font-size: 1em;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  background: #242424;
+}
+
+.nvToasts .nvToastText {
+  flex: 1 0 0;
+  padding-right: 15px;
+  font-size: 0.95em;
+  color: #e5e5e5;
+  letter-spacing: 0.03em;
+}
+
+.nvToasts .nvToastAction {
+  flex: 0;
+  font-size: 0.85em;
+  color: #fbb131;
+  cursor: pointer;
+}
+
+.nvToasts .nvToastEllipsis,
+.nvToasts .nvToastText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nvToasts .nvToast:first-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .nvToasts {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .nvToasts .nvToast {
+    width: inherit;
+    margin: 0;
+    border-radius: 0;
+  }
+}
