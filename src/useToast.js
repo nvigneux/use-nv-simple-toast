@@ -41,11 +41,13 @@ export const useToast = () => {
    */
   const setToast = (toast, time = 5000) => {
     const id = generateId()
-    let newToasts = [].concat({ ...toast, id }, toasts || [])
-    createTimeOut({ ...toast, id }, time)
 
-    if (newToasts.length > 3) newToasts.pop()
-    setState(newToasts)
+    setState(prevState => {
+      let newToasts = [].concat({ ...toast, id }, prevState || [])
+      createTimeOut({ ...toast, id }, time)
+      if (newToasts.length > 3) newToasts.pop()
+      return newToasts
+    })
   }
 
   /**
