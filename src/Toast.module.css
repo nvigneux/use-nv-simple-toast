@@ -2,8 +2,6 @@
   position: fixed;
   display: flex;
   flex-direction: column-reverse;
-  bottom: 15px;
-  right: 15px;
 }
 
 .nvToasts .nvToast {
@@ -15,14 +13,12 @@
   font-size: 1em;
   border-radius: 6px;
   margin-bottom: 5px;
-  background: #242424;
 }
 
 .nvToasts .nvToastText {
   flex: 1 0 0;
   padding-right: 15px;
   font-size: 0.95em;
-  color: #e5e5e5;
   letter-spacing: 0.03em;
 }
 
@@ -42,6 +38,48 @@
 
 .nvToasts .nvToast:first-child {
   margin-bottom: 0;
+}
+
+.nvToasts.left {
+  left: 15px;
+}
+.nvToasts.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nvToasts.right {
+  right: 15px;
+}
+
+.nvToasts.top {
+  top: 15px;
+}
+.nvToasts.middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.nvToasts.bottom {
+  bottom: 15px;
+}
+
+.nvToasts.center.middle {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nvToasts.black .nvToast {
+  background: #242424;
+}
+.nvToasts.black .nvToastText {
+  color: #fdfdfd;
+}
+
+.nvToasts.white .nvToast {
+  background: #fdfdfd;
+}
+.nvToasts.white .nvToastText {
+  color: #242424;
 }
 
 @media screen and (max-width: 600px) {

@@ -12,7 +12,12 @@ const canUseDOM = !!(
 
 export const ToastContext = React.createContext([{}, () => {}])
 
-export const ToastContainer = ({ children }) => {
+export const ToastContainer = ({
+  children,
+  positionX,
+  positionY,
+  backgroundColor
+}) => {
   const [toasts, setToasts] = useState([])
 
   const portalTarget = canUseDOM ? document.body : null
@@ -21,11 +26,27 @@ export const ToastContainer = ({ children }) => {
     <ToastContext.Provider value={[toasts, setToasts]}>
       {children}
 
-      {createPortal(<ToastComponent />, portalTarget)}
+      {createPortal(
+        <ToastComponent
+          positionX={positionX}
+          positionY={positionY}
+          backgroundColor={backgroundColor}
+        />,
+        portalTarget
+      )}
     </ToastContext.Provider>
   )
 }
 
 ToastContainer.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  positionX: PropTypes.oneOf(['left', 'center', 'right']),
+  positionY: PropTypes.oneOf(['top', 'middle', 'bottom']),
+  backgroundColor: PropTypes.oneOf(['white', 'black'])
+}
+
+ToastContainer.defaultProps = {
+  positionX: 'right',
+  positionY: 'bottom',
+  backgroundColor: 'black'
 }

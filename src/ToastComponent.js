@@ -1,28 +1,33 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { useToast } from '.'
 import style from './Toast.module.css'
 
-export const ToastComponent = () => {
+export const ToastComponent = ({ positionX, positionY, backgroundColor }) => {
   const { removeToast, getToasts } = useToast()
 
   return (
-    <section className={style.nvToasts}>
+    <section
+      className={`${style.nvToasts} ${style[positionX]} ${style[positionY]} ${style[backgroundColor]}`}
+    >
       {getToasts.map(toast => (
-        <div key={toast.id} className={style.nvToast}>
+        <div
+          key={toast.id}
+          className={style.nvToast}
+          onClick={() => removeToast(toast.id)}
+        >
           <p className={style.nvToastText}>{toast.title}</p>
-          <span
-            className={style.nvToastAction}
-            onClick={() => removeToast(toast.id)}
-            key={toast.id}
-          >
-            remove
-          </span>
         </div>
       ))}
     </section>
   )
+}
+
+ToastComponent.propTypes = {
+  positionX: PropTypes.string.isRequired,
+  positionY: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired
 }
 
 // const Toast = PropTypes.shape({

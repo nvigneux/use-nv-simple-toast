@@ -5,7 +5,7 @@ import { Navbar } from "./Navbar";
 
 const Toaster = () => {
   const { setToast } = useToast();
-  const [values, setValues] = useState({ title: "", time: 5000 });
+  const [values, setValues] = useState({ title: "Toast 💨", time: 5000 });
 
   const handleChangeForm = (field, value) =>
     setValues({ ...values, [field]: value });
@@ -20,6 +20,7 @@ const Toaster = () => {
             name="title"
             type="text"
             onChange={e => handleChangeForm("title", e.target.value)}
+            value={values.title}
           />
         </label>
         <label htmlFor="time">
@@ -27,7 +28,10 @@ const Toaster = () => {
           <input
             name="time"
             type="number"
-            onChange={e => handleChangeForm("time", parseInt(e.target.value, 10))}
+            onChange={e =>
+              handleChangeForm("time", parseInt(e.target.value, 10))
+            }
+            value={values.time}
           />
         </label>
         <button
