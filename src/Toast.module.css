@@ -13,6 +13,7 @@
   font-size: 1em;
   border-radius: 6px;
   margin-bottom: 5px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .nvToasts .nvToastText {
@@ -82,16 +83,15 @@
   color: #242424;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
   .nvToasts {
-    bottom: 0;
-    left: 0;
-    right: 0;
+    right: initial !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 
   .nvToasts .nvToast {
-    width: inherit;
+    width: 80vw;
     margin: 0;
-    border-radius: 0;
   }
 }
